@@ -3,12 +3,16 @@ class View {
 
   }
 
-  static successAddAuthor() {
+  static showErr(err) {
     console.log(err);
   }
 
-  static showAuthor(author) {
+  static successAddAuthor(author) {
     console.log(author)
+  }
+
+  static showAuthor(author) {
+    console.log(author);
   }
 }
 

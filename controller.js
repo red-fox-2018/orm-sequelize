@@ -1,6 +1,8 @@
 const model = require('./models');
 const Author = model.Author
 const View = require('./view');
+const Sequelize = require('sequelize');
+require('sequelize-values')(Sequelize)
 
 class Controller {
   constructor() {
@@ -33,7 +35,12 @@ class Controller {
       }
     })
     .then((author) => {
-      return author.map(());
+      return author.map((author) => {
+        return author.getValues();
+      });
+      // console.log(author);
+    })
+    .then((author) => {
       // console.log(author);
       View.showAuthor(author)
     })
