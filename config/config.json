@@ -1,0 +1,13 @@
+{
+  "development": {
+    "username": "iswanulumam",
+    "password": null,
+    "database": "dbormsequelize",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "query": {
+    "raw": true
+  }
+}
