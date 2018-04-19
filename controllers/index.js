@@ -33,12 +33,31 @@ class AutorController {
   }
   static authorReadAll() {
     Author.findAll({ raw: true }).then(rows => {
-      views.showList(rows);
-      process.exit(0);
+      if (rows) {
+        views.showList(rows);
+        process.exit(0);
+      }
     });
   }
-  static authorUpdate() {
-
+  static authorUpdate(values) {
+    let id = Number(values[0]);
+    let firstName = values[1];
+    let lastName = values[2];
+    let religion = values[3];
+    let gender = values[4];
+    let age = values[5];
+    // console.log(values)
+    Author.findById(id).then(row => {
+      return row.update({ firstName, lastName, religion, gender, age, createdAt: new Date(), updatedAt: new Date() });
+    }).then(res => {
+      if (res) {
+        views.show(`Berhasil update database!`);
+        process.exit(0);
+      } else {
+        views.show(`Gagal update database!`);
+        process.exit(0);
+      }
+    });
   }
   static authorDelete(values) {
     let id = values[0];
