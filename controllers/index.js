@@ -37,85 +37,24 @@ class AutorController {
       process.exit(0);
     });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   static authorUpdate() {
 
   }
-  static authorDelete() {
-
+  static authorDelete(values) {
+    let id = values[0];
+    Author.destroy({
+      where: {
+        id: id
+      }
+    }).then(res => {
+      if (res) {
+        views.show(`Row berhasil dihapus berhasil dihapus!`);
+        process.exit(0);
+      } else {
+        views.show(`Gagal menghapus database!`);
+        process.exit(0);
+      }
+    });
   }
 }
 
