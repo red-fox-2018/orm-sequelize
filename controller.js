@@ -29,16 +29,9 @@ class Controller {
   }
 
   static findByID(inputId) {
-    Author.findAll({
-      where: {
-        id: inputId
-      }
-    })
+    Author.findById(inputId)
     .then((author) => {
-      return author.map((author) => {
-        return author.getValues();
-      });
-      // console.log(author);
+      return author.getValues();
     })
     .then((author) => {
       // console.log(author);
@@ -46,6 +39,57 @@ class Controller {
     })
     .catch((err) => {
       if (err) View.showErr(err)
+    })
+  }
+
+  static findAllAuthor() {
+    Author.findAll({
+      attributes: {include: ''}
+    })
+    .then((authors) => {
+      // console.log(authors);
+      return authors.map((authors) => {
+        return authors.getValues();
+      })
+    })
+    .then((authors) => {
+      View.showAuthor(authors)
+    })
+    .catch((err) => {
+      if (err) View.showErr(err)
+    })
+  }
+
+  static updateById(inputData) {
+    //[0] id; [1] col; [2] value
+    Author.update({
+      [inputData[1]]: inputData[2],
+      updatedAt: new Date().toUTCString()
+    }, {
+      where: {
+        id: inputData[0]
+      },
+      returning: true
+    })
+    .then((countAndRows) => {
+      View.successUpdateAuthor(countAndRows);
+    })
+    .catch((err) => {
+      if (err) View.showErr(err)
+    })
+  }
+
+  static deleteById(inputId) {
+    Author.destroy({
+      where:{
+        id: inputId
+      }
+    })
+    .then((num) => {
+      View.successDelAuthor(num)
+    })
+    .catch((err) => {
+      View.showErr(err)
     })
   }
 }

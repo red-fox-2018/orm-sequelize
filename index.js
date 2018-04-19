@@ -15,13 +15,14 @@ if (table === 'author') {
       Controller.findByID(argv[2])
       break;
     case 'read_all':
-
+      Controller.findAllAuthor()
       break;
     case 'update':
-
+      //[0] id; [1] col; [2] value
+      Controller.updateById(argv.slice(2))
       break;
     case 'delete':
-
+      Controller.deleteById(argv[2])
       break;
     default:
 
