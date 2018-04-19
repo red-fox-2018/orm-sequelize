@@ -11,7 +11,7 @@ module.exports = {
       firstName: {
         type: Sequelize.STRING
       },
-      lastNeme: {
+      lastName: {
         type: Sequelize.STRING
       },
       religion: {
