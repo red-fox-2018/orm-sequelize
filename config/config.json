@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "sbgykkct",
+    "password": "fqK1tsZ_DO_j_ZNfFkbVOekQJkOJJXWu",
+    "database": "sbgykkct",
+    "host": "elmer.db.elephantsql.com",
+    "dialect": "postgres"
+  }
+}
